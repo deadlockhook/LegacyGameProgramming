@@ -88,7 +88,6 @@ namespace TextRPG_OOP_
                     if(items[i].itemType == "Coin")
                     {
                         player.playerCoins += items[i].gainAmount;
-                        DungeonExplorer.gameManager.questSystem.on_coin_collect();
                         items[i].isActive = false;    
                     }
                     if(items[i].itemType == "Health Pickup" && player.healthSystem.health != player.PlayerMaxHP)

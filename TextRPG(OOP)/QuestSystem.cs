@@ -63,11 +63,14 @@ namespace TextRPG_OOP_
                     }
                 case "Goblin":
                     {
-                        goblins_killed += 1;
-                        if (goblins_killed == 3)
-                            update_quest(kill_5_goblins_quest_index, "               ", true);
-                        else
-                            update_quest(kill_5_goblins_quest_index, "[Remaining : " + (3 - goblins_killed) + "]", false);
+                        if (!quests[kill_5_goblins_quest_index].completed)
+                        {
+                            goblins_killed += 1;
+                            if (goblins_killed == 3)
+                                update_quest(kill_5_goblins_quest_index, "               ", true);
+                            else
+                                update_quest(kill_5_goblins_quest_index, "[Remaining : " + (3 - goblins_killed) + "]", false);
+                        }
                         break;
                     }
             }
@@ -75,12 +78,15 @@ namespace TextRPG_OOP_
         }
         public void on_coin_collect()
         {
-            coins_collected += 1;
+            if (!quests[collect_7_coins_quest_index].completed)
+            {
+                coins_collected += 1;
 
-            if (coins_collected == 10)
-                update_quest(collect_7_coins_quest_index, "               ", true);
-            else
-                update_quest(collect_7_coins_quest_index, "[Remaining : " + (10 - coins_collected) + "]", false);
+                if (coins_collected == 10)
+                    update_quest(collect_7_coins_quest_index, "               ", true);
+                else
+                    update_quest(collect_7_coins_quest_index, "[Remaining : " + (10 - coins_collected) + "]", false);
+            }
         }
 
         public int add_quest(string _quest_text, string _extra_text)

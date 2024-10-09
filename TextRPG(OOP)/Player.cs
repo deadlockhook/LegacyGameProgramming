@@ -109,7 +109,7 @@ namespace TextRPG_OOP_
                     }
                     if(collisionMap.CretureInTarget(moveY, position.x) && collisionMap.index != 0) // Player should always be 0, need to prevent self harm.
                     {
-                        collisionMap.characters[collisionMap.index].healthSystem.TakeDamage(playerDamage);
+                        collisionMap.characters[collisionMap.index].healthSystem.TakeDamage(playerDamage,true);
                         enemyHitName = collisionMap.characters[collisionMap.index].nameIndex;
                         enemyHitHealth = collisionMap.characters[collisionMap.index].healthSystem.health;
                         enemyHitArmor = collisionMap.characters[collisionMap.index].healthSystem.armor;
@@ -170,7 +170,7 @@ namespace TextRPG_OOP_
                     }
                     if(collisionMap.CretureInTarget(moveY, position.x) && collisionMap.index != 0)
                     {
-                        collisionMap.characters[collisionMap.index].healthSystem.TakeDamage(playerDamage);
+                        collisionMap.characters[collisionMap.index].healthSystem.TakeDamage(playerDamage,true);
                         enemyHitName = collisionMap.characters[collisionMap.index].nameIndex;
                         enemyHitHealth = collisionMap.characters[collisionMap.index].healthSystem.health;
                         enemyHitArmor = collisionMap.characters[collisionMap.index].healthSystem.armor;
@@ -231,7 +231,7 @@ namespace TextRPG_OOP_
                     }
                     if(collisionMap.CretureInTarget(position.y, moveX) && collisionMap.index != 0)
                     {
-                        collisionMap.characters[collisionMap.index].healthSystem.TakeDamage(playerDamage);
+                        collisionMap.characters[collisionMap.index].healthSystem.TakeDamage(playerDamage,true);
                         enemyHitName = collisionMap.characters[collisionMap.index].nameIndex;
                         enemyHitHealth = collisionMap.characters[collisionMap.index].healthSystem.health;
                         enemyHitArmor = collisionMap.characters[collisionMap.index].healthSystem.armor;
@@ -292,7 +292,7 @@ namespace TextRPG_OOP_
                     }
                     if(collisionMap.CretureInTarget(position.y, moveX) && collisionMap.index != 0)
                     {
-                        collisionMap.characters[collisionMap.index].healthSystem.TakeDamage(playerDamage);
+                        collisionMap.characters[collisionMap.index].healthSystem.TakeDamage(playerDamage,true);
                         enemyHitName = collisionMap.characters[collisionMap.index].nameIndex;
                         enemyHitHealth = collisionMap.characters[collisionMap.index].healthSystem.health;
                         enemyHitArmor = collisionMap.characters[collisionMap.index].healthSystem.armor;

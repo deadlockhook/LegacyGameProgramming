@@ -40,7 +40,7 @@ namespace TextRPG_OOP_
         /// Damages what ever is hit by passed in damage value
         /// </summary>
         /// <param name="Damage"></param>
-        public void TakeDamage(int Damage) //Damage taking system.
+        public void TakeDamage(int Damage , bool LocalPlayerAttack = false) //Damage taking system.
         {
             if(Damage - armor <= 0)
             {
@@ -55,7 +55,9 @@ namespace TextRPG_OOP_
 
                     if (!owningCharacter.isDead)
                     {
-                        DungeonExplorer.gameManager.questSystem.on_death_callback(owningCharacter);
+                        if (LocalPlayerAttack == true)
+                           DungeonExplorer.gameManager.questSystem.on_death_callback(owningCharacter);
+
                         owningCharacter.isDead = true;
                     }
 
