@@ -59,6 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestSystem.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="ShopSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

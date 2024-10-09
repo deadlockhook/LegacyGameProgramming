@@ -11,12 +11,12 @@ namespace TextRPG_OOP_
     {
         public struct Quest
         {
-            public Quest(string _quest_text, string _extra_text)
+            public Quest(bool _active, string _quest_text, string _extra_text)
             {
                 completed = false;
-                active = true;
                 quest_text = _quest_text;
                 extra_text = _extra_text;
+                active = _active;
             }
 
             public bool completed;
@@ -33,12 +33,14 @@ namespace TextRPG_OOP_
         int kill_5_slimes_quest_index = 0;
         int collect_7_coins_quest_index = 0;
         int kill_5_goblins_quest_index = 0;
+        int game_finish_quest_index = 0;
         public QuestSystem()
         {
             quests = new List<Quest>();
-            kill_5_slimes_quest_index = add_quest("Kill 5 slimes", "[Remaining : 5 ]");
-            collect_7_coins_quest_index = add_quest("Collect 10 coins", "[Remaining : 10 ]");
-            kill_5_goblins_quest_index = add_quest("Kill 3 Goblins", "[Remaining : 3 ]");
+            kill_5_slimes_quest_index = add_quest(true, "Kill 5 slimes", "[Remaining : 5 ]");
+            collect_7_coins_quest_index = add_quest(true, "Collect 10 coins", "[Remaining : 10 ]");
+            kill_5_goblins_quest_index = add_quest(true, "Kill 3 Goblins", "[Remaining : 3 ]");
+            game_finish_quest_index = add_quest(false, "Win the game", "");
         }
 
         private int quest_text_start_cursor_x = 0, quest_text_start_cursor_y = 0;
@@ -54,9 +56,9 @@ namespace TextRPG_OOP_
                             slimes_killed += 1;
 
                             if (slimes_killed == 5)
-                                update_quest(kill_5_slimes_quest_index, "               ", true);
+                                update_quest(true, kill_5_slimes_quest_index, "               ", true);
                             else
-                                update_quest(kill_5_slimes_quest_index, "[Remaining : " + (5 - slimes_killed) + "]", false);
+                                update_quest(true, kill_5_slimes_quest_index, "[Remaining : " + (5 - slimes_killed) + "]", false);
                         }
 
                         break;
@@ -67,14 +69,18 @@ namespace TextRPG_OOP_
                         {
                             goblins_killed += 1;
                             if (goblins_killed == 3)
-                                update_quest(kill_5_goblins_quest_index, "               ", true);
+                                update_quest(true, kill_5_goblins_quest_index, "               ", true);
                             else
-                                update_quest(kill_5_goblins_quest_index, "[Remaining : " + (3 - goblins_killed) + "]", false);
+                                update_quest(true, kill_5_goblins_quest_index, "[Remaining : " + (3 - goblins_killed) + "]", false);
                         }
                         break;
                     }
             }
 
+            if (quests[collect_7_coins_quest_index].completed &&
+    quests[kill_5_goblins_quest_index].completed &&
+    quests[kill_5_slimes_quest_index].completed)
+                update_quest(true, game_finish_quest_index, "                   ", false);
         }
         public void on_coin_collect()
         {
@@ -83,22 +89,35 @@ namespace TextRPG_OOP_
                 coins_collected += 1;
 
                 if (coins_collected == 10)
-                    update_quest(collect_7_coins_quest_index, "               ", true);
+                    update_quest(true, collect_7_coins_quest_index, "               ", true);
                 else
-                    update_quest(collect_7_coins_quest_index, "[Remaining : " + (10 - coins_collected) + "]", false);
+                    update_quest(true, collect_7_coins_quest_index, "[Remaining : " + (10 - coins_collected) + "]", false);
             }
+
+            if (quests[collect_7_coins_quest_index].completed &&
+                quests[kill_5_goblins_quest_index].completed &&
+                quests[kill_5_slimes_quest_index].completed)
+                update_quest(true, game_finish_quest_index, "                   ", false);
+
+
         }
 
-        public int add_quest(string _quest_text, string _extra_text)
+        public void on_game_win()
         {
-            quests.Add(new Quest(_quest_text, _extra_text));
+            update_quest(true, game_finish_quest_index, "                   ", true);
+        }
+
+        public int add_quest(bool active, string _quest_text, string _extra_text)
+        {
+            quests.Add(new Quest(active, _quest_text, _extra_text));
             return quests.Count - 1;
         }
 
-        public void update_quest(int index, string _extra_text, bool completed)
+        public void update_quest(bool active, int index, string _extra_text, bool completed)
         {
             Quest quest = quests[index];
             quest.completed = completed;
+            quest.active = active;
             quest.extra_text = _extra_text;
 
             quests[index] = quest;
@@ -119,24 +138,22 @@ namespace TextRPG_OOP_
 
                 Console.ForegroundColor = ConsoleColor.White;
 
-                Console.Write(quests[current].quest_text + " = ");
 
+                if (quests[current].completed)
+                {
+                    Console.Write(quests[current].quest_text + " = ");
 
-                if (!quests[current].active)
-                {
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write("Inactive" + quests[current].extra_text + "  ");
-                }
-                else if (quests[current].completed)
-                {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("Completed " + quests[current].extra_text + "  ");
                 }
-                else
+                else if (quests[current].active)
                 {
+                    Console.Write(quests[current].quest_text + " = ");
+
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write("Incomplete " + quests[current].extra_text + "  ");
                 }
+
             }
         }
 

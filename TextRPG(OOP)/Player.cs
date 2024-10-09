@@ -96,8 +96,10 @@ namespace TextRPG_OOP_
                 Console.ReadKey(true); 
             }
             playerInput = Console.ReadKey(true);
+
+            DungeonExplorer.gameManager.shopSystem.on_frame(playerInput);
             //Console.WriteLine(playerInput.Key); //debug to see what key is pressed
-            if(playerMoved == false)
+            if (playerMoved == false)
             {
                 if(playerInput.Key == ConsoleKey.W || playerInput.Key == ConsoleKey.UpArrow)
                 {
@@ -365,6 +367,11 @@ namespace TextRPG_OOP_
                     //leaves game
                     Environment.Exit(0);
                 }
+
+                if (playerMoved)
+                    DungeonExplorer.gameManager.shopSystem.on_player_move(collisionMap.activeMap[position.y, position.x]);
+                
+                    
             }
         }
         /// <summary>
@@ -372,34 +379,10 @@ namespace TextRPG_OOP_
         /// </summary>
         void UpPlayerStats()
         {
-            if(playerCoins < 3)
-            {
-                playerDamage = StartingDamage;
+         
+               // playerDamage = StartingDamage;
                 //healthSystem.armor = 0;
-            }
-            if(playerCoins >= 3 && playerCoins < 6)
-            {
-                playerDamage = StartingDamage+2;
-                //healthSystem.armor = 1;
-            }
-            if(playerCoins >= 6 && playerCoins < 9)
-            {
-                playerDamage = StartingDamage+3;
-                //healthSystem.armor = 2;
-            }
-            if(playerCoins >= 9 && playerCoins < 15)
-            {
-                playerDamage = StartingDamage+5;
-                //healthSystem.armor = 3;
-            }
-            if(playerCoins >= 15 && playerCoins < 25)
-            {
-                playerDamage = StartingDamage+7;
-            }
-            if(playerCoins >= 25)
-            {
-                playerDamage = StartingDamage+15;
-            }
+            
         }
         /// <summary>
         /// Draws player to map.

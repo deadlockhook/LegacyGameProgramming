@@ -19,6 +19,7 @@ namespace TextRPG_OOP_
         public ItemManager itemManager;
         public Settings settings;
         public QuestSystem questSystem;
+        public ShopSystem shopSystem;
         /// <summary>
         /// Gets all references so game is ready to start up
         /// </summary>
@@ -29,6 +30,7 @@ namespace TextRPG_OOP_
             settings = new Settings();
             itemManager = new ItemManager();
             questSystem = new QuestSystem();
+            shopSystem = new ShopSystem();
             gameMap = new Map(itemManager);
             enemyManager = new EnemyManager(gameMap, settings);
             mainPlayer = new Player(gameMap,itemManager, settings);
@@ -58,6 +60,7 @@ namespace TextRPG_OOP_
             Debug.WriteLine("EndingGame");
             if(mainPlayer.gameIsOver && mainPlayer.gameWon == true)
             {
+                DungeonExplorer.gameManager.questSystem.on_game_win();
                 Debug.WriteLine("Player won");
                 Thread.Sleep(2000);
                 Console.Clear();
@@ -142,6 +145,19 @@ namespace TextRPG_OOP_
             Console.WriteLine();
             Console.Write("Collect peices of armor "); 
             gameMap.DrawArmor();
+
+            Console.WriteLine();
+            Console.Write("Shops where you can buy attack power ");
+            gameMap.DrawShopAttackPower();
+
+            Console.WriteLine();
+            Console.Write("Shops where you can buy health ");
+            gameMap.DrawShopHealth();
+
+            Console.WriteLine();
+            Console.Write("Shops where you can buy armor ");
+            gameMap.DrawShopArmor();
+
             Console.Write(" to up your defence.");
             Console.WriteLine();
             Console.Write("Avoid or fight the monsters!");

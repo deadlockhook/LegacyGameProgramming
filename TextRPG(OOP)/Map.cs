@@ -31,6 +31,11 @@ namespace TextRPG_OOP_
         public char coin = ((char)164); 
         public char healthPickup = ((char)3); // ♥
         public char armorPickup = ((char)21); // §
+      
+        public const char shopAttackPower = ((char)'P'); // §
+        public const char shopHealth = ((char)'H'); // §
+        public const char shopArmor = ((char)'A'); // §
+
         static char enemy1 = ((char)4);
         static char enemy2 = ((char)6);
         static char enemy3 = ((char)5);
@@ -306,6 +311,35 @@ namespace TextRPG_OOP_
             Console.Write(armorPickup);
             SetColorDefault();
         }
+
+        public void DrawShopAttackPower()
+        {
+            //Draws armor tile to map
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.Write(shopAttackPower);
+            SetColorDefault();
+        }
+
+        public void DrawShopHealth()
+        {
+            //Draws armor tile to map
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.Write(shopHealth);
+            SetColorDefault();
+        }
+
+        public void DrawShopArmor()
+        {
+            //Draws armor tile to map
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.Write(shopArmor);
+            SetColorDefault();
+        }
+
+
         /// <summary>
         /// Code for tiles color and ascii
         /// </summary>
