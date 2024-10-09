@@ -17,6 +17,7 @@ namespace TextRPG_OOP_
         public string nameIndex;
         public string name;
         public string characterTag;
+        public bool isDead;
         public Character()
         {
             healthSystem = new HealthSystem(this);

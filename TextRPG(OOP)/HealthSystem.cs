@@ -52,8 +52,15 @@ namespace TextRPG_OOP_
                 if(health <= 0 )
                 {
                     health = 0;
+
+                    if (!owningCharacter.isDead)
+                    {
+                        DungeonExplorer.gameManager.questSystem.on_death_callback(owningCharacter);
+                        owningCharacter.isDead = true;
+                    }
+
                     IsAlive = false;
-                    DungeonExplorer.gameManager.questSystem.on_death_callback(owningCharacter);
+  
                 }
             }
         }
