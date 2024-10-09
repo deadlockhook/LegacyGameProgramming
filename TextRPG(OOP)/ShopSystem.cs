@@ -67,7 +67,7 @@ namespace TextRPG_OOP_
 
             if (DungeonExplorer.gameManager.gameMap.mainPlayer.playerCoins < 2)
             {
-                Console.Write("Insufficient coins");
+                Console.Write("Insufficient coins                                 ");
                 return;
             }
 
