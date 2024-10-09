@@ -18,7 +18,6 @@ namespace TextRPG_OOP_
         public int enemyNumber;
         public int enemyMaxX;
         public int enemyMaxY;
-        public string enemyType;
         public int levelNumber;
         public Char avatar;
         public ConsoleColor avatarColor;
@@ -28,8 +27,9 @@ namespace TextRPG_OOP_
             enemyMaxHP = 2;
             enemyDamage = 1;
             healthSystem.SetHealth(enemyMaxHP);
-            enemyType = "Slime";
-            name = enemyType;
+            characterTag = "Slime";
+            nameIndex = characterTag;
+            name = characterTag;
             avatar = ((char)127);
             moveRoll = new Random();
             //Console.Write("Initialized enemy");
@@ -61,7 +61,7 @@ namespace TextRPG_OOP_
                 position.x = 0;
                 position.y = 0;
             }
-            if(enemyType == "Plasmoid") // this type moves at random
+            if(characterTag == "Plasmoid") // this type moves at random
             {
                 int moveResult = moveRoll.Next(1,5);
                 Debug.WriteLine("roll result = " + moveResult);
@@ -75,7 +75,7 @@ namespace TextRPG_OOP_
                     if(gameMap.CretureInTarget(enemyMoveY, position.x) && gameMap.index != enemyNumber) // != enemyNumber is needed to prevent enemies from self harming
                     {
                         gameMap.characters[gameMap.index].healthSystem.TakeDamage(enemyDamage);
-                        Debug.WriteLine("hit " + gameMap.characters[gameMap.index].name);
+                        Debug.WriteLine("hit " + gameMap.characters[gameMap.index].nameIndex);
                         enemyMoveY = position.y;
                         position.y = enemyMoveY;
                         return;
@@ -113,7 +113,7 @@ namespace TextRPG_OOP_
                     if(gameMap.CretureInTarget(enemyMoveY, position.x) && gameMap.index != enemyNumber)
                     {
                         gameMap.characters[gameMap.index].healthSystem.TakeDamage(enemyDamage);
-                        Debug.WriteLine("hit " + gameMap.characters[gameMap.index].name);
+                        Debug.WriteLine("hit " + gameMap.characters[gameMap.index].nameIndex);
                         enemyMoveY = position.y;
                         position.y = enemyMoveY;
                         return;
@@ -155,7 +155,7 @@ namespace TextRPG_OOP_
                 if(gameMap.CretureInTarget(position.y, enemyMoveX)&& gameMap.index-1 != enemyNumber)
                 {
                     gameMap.characters[gameMap.index].healthSystem.TakeDamage(enemyDamage);
-                    Debug.WriteLine("hit " + gameMap.characters[gameMap.index].name);
+                    Debug.WriteLine("hit " + gameMap.characters[gameMap.index].nameIndex);
                     enemyMoveX = position.x;
                     position.x = enemyMoveX;
                     return;
@@ -189,7 +189,7 @@ namespace TextRPG_OOP_
                 if(gameMap.CretureInTarget(position.y, enemyMoveX)&& gameMap.index != enemyNumber)
                 {
                     gameMap.characters[gameMap.index].healthSystem.TakeDamage(enemyDamage);
-                    Debug.WriteLine("hit " + gameMap.characters[gameMap.index].name);
+                    Debug.WriteLine("hit " + gameMap.characters[gameMap.index].nameIndex);
                     enemyMoveX = position.x;
                     position.x = enemyMoveX;
                     return;
@@ -217,7 +217,7 @@ namespace TextRPG_OOP_
                 }
             }
             }
-            if(enemyType == "GoblinFolk") // this type will flee from player
+            if(characterTag == "GoblinFolk") // this type will flee from player
             {
                 int rangeMaxX = 7;
             int rangeMaxY = 5;
@@ -357,7 +357,7 @@ namespace TextRPG_OOP_
                 {return;}
             }
             }
-            if(enemyType == "Construct") // this type will chase player
+            if(characterTag == "Construct") // this type will chase player
             {
                 int rangeMaxX = 7;
                 int rangeMaxY = 7;

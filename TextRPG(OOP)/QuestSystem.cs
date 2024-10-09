@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,11 +35,16 @@ namespace TextRPG_OOP_
 
         private int quest_text_start_cursor_x = 0, quest_text_start_cursor_y = 0;
 
-
-        void on_slime_kill_callback()
+        public void on_death_callback(Character character)
+        {
+            Console.WriteLine("Killed " + character.name);
+           // Console.WriteLine("Killed "+ character)
+        }
+        public void on_coin_collect()
         {
 
         }
+
         public int add_quest(string _quest_text)
         {
             quests.Add(new Quest(_quest_text));

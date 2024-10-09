@@ -135,7 +135,7 @@ namespace TextRPG_OOP_
             Console.WriteLine();
             Console.Write("Collect coins ");
             gameMap.DrawCoin();
-            Console.Write(" to increase your attack power.");
+            Console.Write(" to increase your attack power. They are useable in shops.");
             Console.WriteLine();
             Console.Write("Collect hearts to heal.");
             gameMap.DrawHealthPickup();

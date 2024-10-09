@@ -14,10 +14,12 @@ namespace TextRPG_OOP_
     {
         public HealthSystem healthSystem;
         public Position position;
+        public string nameIndex;
         public string name;
+        public string characterTag;
         public Character()
         {
-            healthSystem = new HealthSystem();
+            healthSystem = new HealthSystem(this);
             position.x = 0;
             position.y = 0;
         }

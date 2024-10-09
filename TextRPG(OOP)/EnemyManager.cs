@@ -6,6 +6,8 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Xml.Linq;
+using System.Diagnostics.Contracts;
 
 namespace TextRPG_OOP_
 {
@@ -35,8 +37,9 @@ namespace TextRPG_OOP_
             if(type == "Plasmoid")
             {
                 Plasmoid plasmoid = new Plasmoid(RandomConsoleColor(),enemySettings);
-                plasmoid.enemyType = type;
-                plasmoid.name = "Slime " + EnemyTypeCount(type);
+                plasmoid.characterTag = type;
+                plasmoid.nameIndex = "Slime " + EnemyTypeCount(type);
+                plasmoid.name = "Slime";
                 plasmoid.SetLevelNumber(levelNumber);
                 plasmoid.SetEnemyMaxPosition(gameMap);
                 plasmoid.SetEnemyStats();
@@ -45,8 +48,9 @@ namespace TextRPG_OOP_
             if(type == "Construct")
             {
                 Construct construct = new Construct(RandomConsoleColor(),enemySettings);
-                construct.enemyType = type;
-                construct.name = "Living Armor " + EnemyTypeCount(type);
+                construct.characterTag = type;
+                construct.nameIndex = "Living Armor " + EnemyTypeCount(type);
+                construct.name = "Living Armor";
                 construct.SetLevelNumber(levelNumber);
                 construct.SetEnemyMaxPosition(gameMap);
                 construct.SetEnemyStats();
@@ -55,16 +59,18 @@ namespace TextRPG_OOP_
             if(type == "GoblinFolk")
             {
                 GoblinFolk goblinFolk = new GoblinFolk(RandomConsoleColor(),enemySettings);
-                goblinFolk.enemyType = type;
+                goblinFolk.characterTag = type;
                 if(isFirstKobald)
                 {
-                    goblinFolk.name = "Jim the Coward";
+                    goblinFolk.nameIndex = "Jim the Coward";
                     isFirstKobald = false;
                 }
                 else
                 {
-                    goblinFolk.name = "Goblin " + EnemyTypeCount(type);
+                    goblinFolk.nameIndex = "Goblin " + EnemyTypeCount(type);
                 }
+                goblinFolk.name = "Goblin";
+
                 goblinFolk.SetLevelNumber(levelNumber);
                 goblinFolk.SetEnemyMaxPosition(gameMap);
                 goblinFolk.SetEnemyStats();
@@ -78,7 +84,7 @@ namespace TextRPG_OOP_
         {
             for(int i = 0; i < enemiesList.Count(); i++)
             {
-                Debug.WriteLine("Moving " + enemiesList[i].name);
+                Debug.WriteLine("Moving " + enemiesList[i].nameIndex);
                 enemiesList[i].MoveEnemy(gameMap);
             }
         }
@@ -134,7 +140,7 @@ namespace TextRPG_OOP_
             int enemyCount = 0;
             for(int i = 0; i < enemiesList.Count(); i++)
             {
-                if(enemiesList[i].enemyType == type)
+                if(enemiesList[i].characterTag == type)
                 {
                     enemyCount += 1;
                 }

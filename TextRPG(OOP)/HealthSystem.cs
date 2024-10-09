@@ -16,8 +16,10 @@ namespace TextRPG_OOP_
         public int health;
         public int armor;
         public bool IsAlive;
-        public HealthSystem() //Constructor
+        private Character owningCharacter;
+        public HealthSystem(Character _owningCharacter) //Constructor
         {
+            owningCharacter = _owningCharacter;
             IsAlive = true;
             armor = 0;
         }
@@ -51,6 +53,7 @@ namespace TextRPG_OOP_
                 {
                     health = 0;
                     IsAlive = false;
+                    DungeonExplorer.gameManager.questSystem.on_death_callback(owningCharacter);
                 }
             }
         }
