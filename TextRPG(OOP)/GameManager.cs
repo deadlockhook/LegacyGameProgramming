@@ -20,14 +20,18 @@ namespace TextRPG_OOP_
         public Settings settings;
         public QuestSystem questSystem;
         public ShopSystem shopSystem;
+        public JsonFile<Settings> settingsManager;
         /// <summary>
         /// Gets all references so game is ready to start up
         /// </summary>
         private void StartUp()
         {
+            settingsManager = new JsonFile<Settings>("Settings.json", true);
+            settings = settingsManager.Read();
+
             Console.CursorVisible = false;
             Debug.WriteLine("Setting Up characters");
-            settings = new Settings();
+            //settings = new Settings();
             itemManager = new ItemManager();
             questSystem = new QuestSystem();
             shopSystem = new ShopSystem();

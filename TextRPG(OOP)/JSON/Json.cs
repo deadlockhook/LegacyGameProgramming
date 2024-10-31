@@ -11,8 +11,8 @@ public class JsonFile<T> where T : class, new()
 
         if (createIfDoesntExist && !File.Exists(_filePath))
         {
-            File.WriteAllText(_filePath, "{}");
-            Console.WriteLine($"[JsonFile.Constructor] Created new JSON file at {_filePath}");
+            File.WriteAllText(_filePath, "");
+            Write(new T());
         }
     }
     public T Read()
