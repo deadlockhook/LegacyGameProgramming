@@ -610,7 +610,7 @@ namespace TextRPG_OOP_
             Console.Write(enemy3);
             Console.Write(" = Goblin Folk");
 
-            DungeonExplorer.gameManager.questSystem.on_render_update(mapX + 1, 6);
+            Entry.gameManager.questSystem.on_render_update(mapX + 1, 6);
         }
         /// <summary>
         /// Draws HUD under game map

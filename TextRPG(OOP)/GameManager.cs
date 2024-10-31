@@ -60,7 +60,7 @@ namespace TextRPG_OOP_
             Debug.WriteLine("EndingGame");
             if(mainPlayer.gameIsOver && mainPlayer.gameWon == true)
             {
-                DungeonExplorer.gameManager.questSystem.on_game_win();
+                Entry.gameManager.questSystem.on_game_win();
                 Debug.WriteLine("Player won");
                 Thread.Sleep(2000);
                 Console.Clear();

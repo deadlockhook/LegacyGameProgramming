@@ -13,7 +13,7 @@ namespace TextRPG_OOP_
     /// <summary>
     /// Program equivilent, runs the game. 
     /// </summary>
-    internal class DungeonExplorer
+    internal class Entry
     {
         public static GameManager gameManager = new GameManager();
         static void Main()

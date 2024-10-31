@@ -65,7 +65,7 @@ namespace TextRPG_OOP_
 
             ConsoleKeyInfo read_key = Console.ReadKey(true);
 
-            if (DungeonExplorer.gameManager.gameMap.mainPlayer.playerCoins < 2)
+            if (Entry.gameManager.gameMap.mainPlayer.playerCoins < 2)
             {
                 Console.Write("Insufficient coins                                 ");
                 return;
@@ -73,28 +73,28 @@ namespace TextRPG_OOP_
 
             if (read_key.Key == ConsoleKey.B)
             {
-                DungeonExplorer.gameManager.gameMap.mainPlayer.playerCoins -= 2;
+                Entry.gameManager.gameMap.mainPlayer.playerCoins -= 2;
                 switch (active_shop)
                 {
                     case shops.shop_attack_power:
                         {
                             Console.Write("Bought 1 attack power for 2 coins!");
                             active_shop = shops.shop_attack_power;
-                            DungeonExplorer.gameManager.gameMap.mainPlayer.playerDamage += 1;
+                            Entry.gameManager.gameMap.mainPlayer.playerDamage += 1;
                             return;
                         }
                     case shops.shop_health:
                         {
                             Console.Write("Bought 1 health for 2 coins!");
                             active_shop = shops.shop_health;
-                            DungeonExplorer.gameManager.gameMap.mainPlayer.healthSystem.health += 1;
+                            Entry.gameManager.gameMap.mainPlayer.healthSystem.health += 1;
                             return;
                         }
                     case shops.shop_armor:
                         {
                             Console.Write("Bought 1 armor for 2 coins!");
                             active_shop = shops.shop_armor;
-                            DungeonExplorer.gameManager.gameMap.mainPlayer.healthSystem.armor += 1;
+                            Entry.gameManager.gameMap.mainPlayer.healthSystem.armor += 1;
                             return;
                         }
                     default:

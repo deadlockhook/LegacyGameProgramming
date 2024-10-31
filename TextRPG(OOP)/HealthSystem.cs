@@ -56,7 +56,7 @@ namespace TextRPG_OOP_
                     if (!owningCharacter.isDead)
                     {
                         if (LocalPlayerAttack == true)
-                           DungeonExplorer.gameManager.questSystem.on_death_callback(owningCharacter);
+                           Entry.gameManager.questSystem.on_death_callback(owningCharacter);
 
                         owningCharacter.isDead = true;
                     }

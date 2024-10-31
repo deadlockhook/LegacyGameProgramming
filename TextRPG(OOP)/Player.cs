@@ -97,7 +97,7 @@ namespace TextRPG_OOP_
             }
             playerInput = Console.ReadKey(true);
 
-            DungeonExplorer.gameManager.shopSystem.on_frame(playerInput);
+            Entry.gameManager.shopSystem.on_frame(playerInput);
             //Console.WriteLine(playerInput.Key); //debug to see what key is pressed
             if (playerMoved == false)
             {
@@ -142,7 +142,7 @@ namespace TextRPG_OOP_
                             itemManager.items[collisionMap.itemIndex].position.x = 0;
                             itemManager.items[collisionMap.itemIndex].position.y = 0;
                             playerCoins += itemManager.items[collisionMap.itemIndex].gainAmount;
-                            DungeonExplorer.gameManager.questSystem.on_coin_collect();
+                            Entry.gameManager.questSystem.on_coin_collect();
                         }
                     }
                     if(collisionMap.CheckTile(moveY, position.x) == false)
@@ -203,7 +203,7 @@ namespace TextRPG_OOP_
                             itemManager.items[collisionMap.itemIndex].position.x = 0;
                             itemManager.items[collisionMap.itemIndex].position.y = 0;
                             playerCoins += itemManager.items[collisionMap.itemIndex].gainAmount;
-                            DungeonExplorer.gameManager.questSystem.on_coin_collect();
+                            Entry.gameManager.questSystem.on_coin_collect();
                         }
                     }
                     if(collisionMap.CheckTile(moveY, position.x) == false)
@@ -264,7 +264,7 @@ namespace TextRPG_OOP_
                             itemManager.items[collisionMap.itemIndex].position.x = 0;
                             itemManager.items[collisionMap.itemIndex].position.y = 0;
                             playerCoins += itemManager.items[collisionMap.itemIndex].gainAmount;
-                            DungeonExplorer.gameManager.questSystem.on_coin_collect();
+                            Entry.gameManager.questSystem.on_coin_collect();
                         }
                     }
                     if(collisionMap.CheckTile(position.y, moveX) == false)
@@ -325,7 +325,7 @@ namespace TextRPG_OOP_
                             itemManager.items[collisionMap.itemIndex].position.x = 0;
                             itemManager.items[collisionMap.itemIndex].position.y = 0;
                             playerCoins += itemManager.items[collisionMap.itemIndex].gainAmount;
-                            DungeonExplorer.gameManager.questSystem.on_coin_collect();
+                            Entry.gameManager.questSystem.on_coin_collect();
                         }
                     }
                     if(collisionMap.CheckTile(position.y, moveX) == false)
@@ -369,7 +369,7 @@ namespace TextRPG_OOP_
                 }
 
                 if (playerMoved)
-                    DungeonExplorer.gameManager.shopSystem.on_player_move(collisionMap.activeMap[position.y, position.x]);
+                    Entry.gameManager.shopSystem.on_player_move(collisionMap.activeMap[position.y, position.x]);
                 
                     
             }
