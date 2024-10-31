@@ -25,26 +25,26 @@ namespace TextRPG_OOP_
             switch (character)
             {
                 case Map.shopAttackPower:
-                {
-                    Console.Write("[SHOP] Selling 1 Attack Power for 2 Coins ");
-                    active_shop = shops.shop_attack_power;
-                    return;
-                }
-            case Map.shopHealth:
-                {
+                    {
+                        Console.Write("[SHOP] Selling 1 Attack Power for 2 Coins ");
+                        active_shop = shops.shop_attack_power;
+                        return;
+                    }
+                case Map.shopHealth:
+                    {
 
-                    Console.Write("[SHOP] Selling 1 Health for 2 Coins ");
-                    active_shop = shops.shop_health;
-                    return;
-                }
-            case Map.shopArmor:
-                {
-                    Console.Write("[SHOP] Selling 1 Armor for 2 Coins . Press B to buy");
-                    active_shop = shops.shop_armor;
-                    return;
-                }
-            default:
-                break;
+                        Console.Write("[SHOP] Selling 1 Health for 2 Coins ");
+                        active_shop = shops.shop_health;
+                        return;
+                    }
+                case Map.shopArmor:
+                    {
+                        Console.Write("[SHOP] Selling 1 Armor for 2 Coins . Press B to buy");
+                        active_shop = shops.shop_armor;
+                        return;
+                    }
+                default:
+                    break;
             }
 
             Console.SetCursorPosition(Map.mapX + 1, 11);
@@ -85,7 +85,6 @@ namespace TextRPG_OOP_
                         }
                     case shops.shop_health:
                         {
-
                             Console.Write("Bought 1 health for 2 coins!");
                             active_shop = shops.shop_health;
                             DungeonExplorer.gameManager.gameMap.mainPlayer.healthSystem.health += 1;

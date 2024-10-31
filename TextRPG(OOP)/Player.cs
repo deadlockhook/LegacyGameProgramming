@@ -13,7 +13,7 @@ namespace TextRPG_OOP_
     /// </summary>
     internal class Player : Character
     {
-        public int playerDamage;
+         public int playerDamage;
         public int playerCoins;
         public int PlayerMaxHP;
         public ConsoleKeyInfo playerInput;
